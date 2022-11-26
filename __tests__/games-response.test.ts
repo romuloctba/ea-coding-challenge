@@ -1,6 +1,7 @@
-import { GamesResponse } from '../src/utils/games-response';
+import { GamesJson } from '../src/utils/game-response/games-response.types';
+import { GamesApiResponse, GameWithWinner } from '../src/utils/game-response/games-response';
 
-const RAW = {
+const RAW: GamesJson = {
   "1": [{
     "winner_score": 21,
     "looser_id": 3,
@@ -13,24 +14,28 @@ const RAW = {
   }],
 };
 
-const EXPECTED: GamesResponse = {
+const EXPECTED: GamesApiResponse = {
   data: {
-    "1": [{
-      "winnerScore": 21,
-      "looserId": 3,
-      "looserScore": 6
-    }],
-    "2": [{
-      "winnerScore": 5,
-      "looserId": 3,
-      "looserScore": 0
-    }],
+    "1": [
+      new GameWithWinner({
+        "winner_score": 21,
+        "looser_id": 3,
+        "looser_score": 6
+      }, 1)
+    ],
+    "2": [
+      new GameWithWinner({
+        "winner_score": 5,
+        "looser_id": 3,
+        "looser_score": 0
+      }, 2)
+    ],
   }
 };
 
 describe('GamesResponse ', () => {
   it('should parse rawData into games ', () => {
-    const result = new GamesResponse(RAW);
+    const result = new GamesApiResponse(RAW);
     expect(result).toEqual(EXPECTED);
   })
 })

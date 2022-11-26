@@ -1,6 +1,7 @@
-import { ParticipantsResponse } from '../src/utils/participants-response';
+import { ParticipantsJson } from './../src/utils/participants-response/participant-response.types';
+import { ParticipantsApiResponse } from '../src/utils/participants-response/participants-response';
 
-const testInput = {
+const RAW: ParticipantsJson = {
   "1": {
     "id": 1,
     "First Name": "Melody",
@@ -14,7 +15,7 @@ const testInput = {
   }
 };
 
-const expectedOutput: ParticipantsResponse = {
+const EXPECTED: ParticipantsApiResponse = {
   "data": [{
     "id": 1,
     "firstName": "Melody",
@@ -29,7 +30,7 @@ const expectedOutput: ParticipantsResponse = {
 
 describe('GamesResponse ', () => {
   it('should parse rawData into games ', () => {
-    const result = new ParticipantsResponse(testInput);
-    expect(result).toEqual(expectedOutput);
+    const result = new ParticipantsApiResponse(RAW);
+    expect(result).toEqual(EXPECTED);
   })
 })
