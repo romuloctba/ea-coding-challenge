@@ -1,19 +1,22 @@
 import ParticipantName from 'components/participant-name/participant-name';
-import { useResults } from 'context/results';
+import PlayedGames from 'components/played-games/played-games';
+import { useModal } from 'context/modal';
+import styles from './participant-modal.module.css';
 
-type ParticipantModalProps = {
-  id: number;
-}
+export default function ParticipantModal ({ close }: { close: Function }) {
+  const { participantId, isOpen } = useModal();
 
-export default function ParticipantModal ({id}: ParticipantModalProps) {
-  const { games } = useResults();
+  const getClass = () => {
+    return isOpen ? styles.openedModal : styles.closedModal;
+  }
 
-  return <>
+  return <div className={getClass()}>
     <div id="modal-header">
-      <h1>Games of <ParticipantName id={id} /></h1>
+      <h1>Games of <ParticipantName id={participantId!} /></h1>
+      <button onClick={() => close()}>x</button>
     </div>
     <div id="modal-body">
-      {/* <PlayedGames id={id} /> */}
+      <PlayedGames id={participantId!} />
     </div>
-  </>
+  </div>
 }

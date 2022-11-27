@@ -1,0 +1,16 @@
+.closedModal {
+  display: none;
+}
+
+.openedModal {
+  background-color: white;
+  color: black;
+  display: block;;
+  min-height: 200px;
+  left: 20px;
+  padding: 1em 2em;
+  position: fixed;
+  top: 20px;
+  width: 800px;
+  z-index: 1;
+}

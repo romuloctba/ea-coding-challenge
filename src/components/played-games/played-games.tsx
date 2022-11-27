@@ -1,3 +1,4 @@
+import { useModal } from 'context/modal';
 import { useResults } from 'context/results'
 import { useEffect, useState } from 'react';
 import { GameWithWinner } from '~utils/game-response/games-response';
@@ -12,6 +13,11 @@ export default function PlayedGames ({ id }: PlayedGamesProps) {
   const { games } = useResults();
 
   const [myGames, setMyGames] = useState<PlayedGamesStats>({ win: [], loss: []})
+
+   const { show: showModal } = useModal();
+
+   const selectParticipant = (id: number) => showModal(id);
+
   useEffect(() => {
     if (!id || !games) return;
 
@@ -36,12 +42,12 @@ export default function PlayedGames ({ id }: PlayedGamesProps) {
         </tr>
         {
           myGames.win?.map((game, index) => {
-            return <GameResult key={index} game={game} />
+            return <GameResult key={index} game={game} onSelectParticipant={selectParticipant}/>
           })
         }
         {
           myGames.loss?.map((game, index) => {
-            return <GameResult key={index} game={game} />
+            return <GameResult key={index} game={game} onSelectParticipant={selectParticipant} />
           })
         }
 

@@ -1,11 +1,21 @@
-import ParticipantName from 'components/participant-name/participant-name';
+import { useModal } from 'context/modal';
 import { GameWithWinner } from '~utils/game-response/games-response';
+import PlayerSelector from './player-selector';
 
-function GameResult({ game }: { game: GameWithWinner }) {
+function GameResult({ game, onSelectParticipant }: { game: GameWithWinner, onSelectParticipant?: Function }) {
+  const { show } = useModal();
+
+  const onClick = (id: number) => {
+    show(id)
+  }
   return (<>
     <tr>
-      <td><ParticipantName id={game.winnerId} /></td>
-      <td><ParticipantName id={game.looserId} /></td>
+      <td>
+        <PlayerSelector id={game.winnerId} onClick={() => onClick(game.winnerId)}/>
+      </td>
+      <td>
+        <PlayerSelector id={game.looserId} onClick={() => onClick(game.looserId)}/>
+      </td>
     </tr>
     <tr>
       <td>{game.winnerScore}</td>

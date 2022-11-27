@@ -1,5 +1,4 @@
 import PlayedGames from 'components/played-games/played-games';
-import ParticipantModal from 'components/user-name-clicking-modal/participant-modal';
 import { useResults } from 'context/results'
 import { useState } from 'react';
 import ParticipantEntry from './participant-entry';
@@ -9,7 +8,6 @@ export default function MainSummary () {
   const [selected, setSelected] = useState(0);
 
   const getStats = (id: number) => {
-    console.log('selected id ', id);
     setSelected(id);
   }
 
@@ -38,6 +36,5 @@ export default function MainSummary () {
 
       <PlayedGames id={selected} />
 
-      <ParticipantModal id={selected} />
   </>;
 }

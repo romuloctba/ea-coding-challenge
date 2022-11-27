@@ -1,10 +1,12 @@
 import MainSummary from 'components/main-summary/main-summary';
-import { useResults } from 'context/results'
+import ParticipantModal from 'components/user-name-clicking-modal/participant-modal';
+import { useModal } from 'context/modal';
 
 export default function DashboardContainer() {
-  const { games, participants } = useResults() || {};
+  const { close: closeModal } = useModal();
 
   return <>
     <MainSummary />
+    <ParticipantModal close={() => closeModal()} />
   </>;
 }
