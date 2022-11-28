@@ -1,34 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Games Results
 
-## Getting Started
+Below there are detailed instructions on how to run the project.
 
-First, run the development server:
+Please run all commands from inside the project folder - the same folder as the `package.json` file
+
+## Running with Docker
+
+1. Build the Docker Image:
 
 ```bash
-npm run dev
-# or
-yarn dev
+docker build -t games-results .
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Run the image in a container
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+docker run -p 3000:3000 games-results
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+3. go to the dashboard
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- The frontend will be available at http://localhost:3000
 
-## Learn More
+- The games endpoints is http://localhost:3000/api/games
 
-To learn more about Next.js, take a look at the following resources:
+- The participants endpoint is http://localhost:3000/api/participants
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Running it directly
 
-## Deploy on Vercel
+1. Install NodeJS version 18
+2. Install Yarn by running:  `npm i -g yarn`
+3. in the app directory (same as package.json file), install the dependencies:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+yarn
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. After dependencies are installed, dev server is ready to run:
+
+```bash
+yarn dev
+```
+- The frontend will be available at http://localhost:3000
+
+- The games endpoints is http://localhost:3000/api/games
+
+- The participants endpoint is http://localhost:3000/api/participants
+
+5. In order to run the production build, first build it
+
+```bash
+yarn build
+```
+
+6. Then run it
+
+```bash
+yarn start
+```
+- The frontend will be available at http://localhost:3000
+
+- The games endpoints is http://localhost:3000/api/games
+
+- The participants endpoint is http://localhost:3000/api/participants
+
+
+### Note
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
