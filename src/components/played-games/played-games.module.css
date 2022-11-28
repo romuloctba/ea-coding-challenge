@@ -1,0 +1,7 @@
+.winner button {
+  background: green;
+}
+
+.looser button {
+  background: red;
+}

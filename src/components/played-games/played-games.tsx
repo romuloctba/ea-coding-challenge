@@ -8,15 +8,13 @@ type PlayedGamesStats = { win: GameWithWinner[], loss: GameWithWinner[] }
 
 type PlayedGamesProps = {
   id: number;
+  onlyAdversaries?: boolean;
 }
-export default function PlayedGames ({ id }: PlayedGamesProps) {
+
+export default function PlayedGames ({ id, onlyAdversaries = false }: PlayedGamesProps) {
   const { games } = useResults();
 
   const [myGames, setMyGames] = useState<PlayedGamesStats>({ win: [], loss: []})
-
-   const { show: showModal } = useModal();
-
-   const selectParticipant = (id: number) => showModal(id);
 
   useEffect(() => {
     if (!id || !games) return;
@@ -29,29 +27,42 @@ export default function PlayedGames ({ id }: PlayedGamesProps) {
     setMyGames(results);
   }, [id, games]);
 
-  if (!myGames) {
-    return <h1>no games yet</h1>;
+  if (!id || !myGames) {
+    return <p>Please select a participant</p>
   }
 
   return <>
     <table>
       <tbody>
-        <tr>
-          <th scope="row">Winner</th>
-          <th scope="row">Looser</th>
-        </tr>
+
+        {
+        onlyAdversaries &&
+          <tr>
+            <th scope="row" style={{ width: '200px' }}>Adversary</th>
+            <th scope="row">Score</th>
+          </tr>
+        }
+
+        {
+        !onlyAdversaries &&
+          <tr>
+            <th scope="row">Winner</th>
+            <th scope="row">Looser</th>
+          </tr>
+        }
+
         {
           myGames.win?.map((game, index) => {
-            return <GameResult key={index} game={game} onSelectParticipant={selectParticipant}/>
+            return <GameResult key={index} game={game} onlyAdversaries={onlyAdversaries} />
           })
         }
         {
           myGames.loss?.map((game, index) => {
-            return <GameResult key={index} game={game} onSelectParticipant={selectParticipant} />
+            return <GameResult key={index} game={game} onlyAdversaries={onlyAdversaries} />
           })
         }
 
         </tbody>
       </table>
-  </>;
+  </>
 }

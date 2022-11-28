@@ -15,6 +15,13 @@ a {
   box-sizing: border-box;
 }
 
+button {
+  width: 100%;
+  cursor: pointer;
+  line-height: 2em;
+  border-radius: 4px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

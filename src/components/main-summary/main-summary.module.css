@@ -1,0 +1,9 @@
+.summaryWrapper {
+  align-items: baseline;
+  display: block;
+  padding-top: 80px;
+  margin: 0 auto;
+  max-width: 90%;
+  position: relative;
+  width: 837px;
+}

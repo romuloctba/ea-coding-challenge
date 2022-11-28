@@ -12,4 +12,6 @@ export type ResultsContext = {
   countLoss?: (participantId: number) => number,
   countPlayed?: (participantId: number) => number,
   getParticipant?: (participantId: number) => Participant | undefined,
+  selectedPlayer?: number,
+  setSelectedPlayer?: (id: number) => void,
 };

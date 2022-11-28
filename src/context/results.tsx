@@ -12,6 +12,7 @@ export const ResultsProvider = ({ children }: PropsWithChildren) => {
   const { data: gamesApiResponse } = useSWR('/api/games', getFetcher<GamesApiResponse>())
   const { data: participantsApiResponse } = useSWR('/api/participants', getFetcher<ParticipantsApiResponse>())
 
+  const [selectedPlayer, setSelectedPlayer] = useState(0);
   const [games, setGames] = useState<GameResults | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -44,7 +45,9 @@ export const ResultsProvider = ({ children }: PropsWithChildren) => {
         countWin,
         games,
         getParticipant,
-        participants: participantsApiResponse
+        participants: participantsApiResponse,
+        selectedPlayer,
+        setSelectedPlayer,
       }}>
         {children}
     </Results.Provider>)

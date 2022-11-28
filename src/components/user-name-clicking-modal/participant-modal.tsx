@@ -1,6 +1,7 @@
 import ParticipantName from 'components/participant-name/participant-name';
 import PlayedGames from 'components/played-games/played-games';
 import { useModal } from 'context/modal';
+
 import styles from './participant-modal.module.css';
 
 export default function ParticipantModal ({ close }: { close: Function }) {
@@ -12,11 +13,11 @@ export default function ParticipantModal ({ close }: { close: Function }) {
 
   return <div className={getClass()}>
     <div id="modal-header">
-      <h1>Games of <ParticipantName id={participantId!} /></h1>
-      <button onClick={() => close()}>x</button>
+      <button onClick={() => close()} className={styles.closeButton}>Close</button>
+      <h1><ParticipantName id={participantId!} />&apos;s played games:</h1>
     </div>
     <div id="modal-body">
-      <PlayedGames id={participantId!} />
+      <PlayedGames id={participantId!} onlyAdversaries={true} />
     </div>
   </div>
 }

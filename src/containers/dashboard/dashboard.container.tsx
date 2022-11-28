@@ -8,5 +8,5 @@ export default function DashboardContainer() {
   return <>
     <MainSummary />
     <ParticipantModal close={() => closeModal()} />
-  </>;
+  </>
 }
