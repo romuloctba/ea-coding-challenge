@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { GameWithWinner } from '~utils/game-response/games-response';
 import GameResult from './game-result';
 
+import style from './played-games.module.css';
+
 type PlayedGamesStats = { win: GameWithWinner[], loss: GameWithWinner[] }
 
 type PlayedGamesProps = {
@@ -38,8 +40,9 @@ export default function PlayedGames ({ id, onlyAdversaries = false }: PlayedGame
         {
         onlyAdversaries &&
           <tr>
-            <th scope="row" style={{ width: '200px' }}>Adversary</th>
-            <th scope="row">Score</th>
+            <th scope="row" className={style.adversaryHeader}>Adversary</th>
+            <th scope="row" className={style.scoreHeader}>Score</th>
+            <th scope="row"></th>
           </tr>
         }
 
