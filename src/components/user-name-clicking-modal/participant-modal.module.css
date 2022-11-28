@@ -5,7 +5,7 @@
 .openedModal {
   background-color: white;
   border-radius: 4px;
-  color: black;
+  color: var(--secondary-color);
   display: block;;
   height: 380px;
   left: 50%;
@@ -21,6 +21,28 @@
 .closeButton {
   background-color: transparent;
   border: none;
-  color: black;
-  font-size: 1.4em;
+  color: var(--secondary-color);
+  font-size: 1.1em;
+}
+
+.modalBody {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.modalFigure {
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.notSelected button:hover {
+  border: initial;
+  background-color: var(--winner-color);
+}
+
+.selected {
+  background-color: var(--selected-color)
 }

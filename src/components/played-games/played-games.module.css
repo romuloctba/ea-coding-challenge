@@ -1,7 +1,41 @@
 .winner button {
-  background: green;
+  background: var(--winner-color);
 }
 
 .looser button {
-  background: red;
+  background:  var(--looser-color);
+}
+
+.center {
+  text-align: center;
+}
+
+.adversaryHeader {
+  width: 200px;
+  text-align: left;
+}
+
+.scoreHeader {
+  width: 100px;
+  text-align: center;
+}
+
+.notSelected button {
+  background-color: transparent;
+  border: transparent;
+  color: var(--secondary-color);
+}
+
+.notSelected button:hover {
+  color: white;
+  background-color: var(--winner-color);
+}
+
+.selected {
+  background-color: var(--selected-color)
+}
+
+.selected button {
+  border: transparent;
+  background-color: var(--selected-color)
 }

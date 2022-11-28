@@ -14,7 +14,7 @@
 }
 
 .gameResult {
-  background-color: black;
+  background-color: var(--secondary-color);
   height: 380px;
   overflow: hidden auto;
   padding: 0.5em 0.5em 80px;
@@ -33,9 +33,15 @@
 }
 
 .notSelected button {
-  background-color: blue;
+  background-color: transparent;
+  border: transparent;
+}
+
+.notSelected button:hover {
+  border: initial;
+  background-color: var(--winner-color);
 }
 
 .selected {
-  background-color: green
+  background-color: var(--selected-color)
 }
