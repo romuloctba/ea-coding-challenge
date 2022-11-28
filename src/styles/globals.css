@@ -1,9 +1,9 @@
 :root {
   --secondary-color: black;
   --primary-color: white;
-  --looser-color: red;
-  --winner-color: green;
-  --selected-color: green;
+  --looser-color: #a25043;
+  --winner-color: #5d8c63;
+  --selected-color: #4d9657;
 }
 
 html,

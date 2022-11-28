@@ -1,3 +1,5 @@
+<!-- Name: Rômulo Zoch -->
+<!-- Date: 2022-11-27 -->
 # Games Results
 
 Below there are detailed instructions on how to run the project.

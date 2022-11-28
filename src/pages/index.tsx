@@ -1,5 +1,18 @@
-import HomeContainer from 'containers/home/home.container'
+import DashboardContainer from 'containers/dashboard/dashboard.container'
+import { ModalProvider } from 'context/modal'
+import { ResultsProvider } from 'context/results'
+import Head from 'next/head'
 
-export default function Home() {
-  return <HomeContainer />;
+export default function Dashboard() {
+  return <>
+    <Head>
+      <title>Games Results</title>
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+    <ResultsProvider>
+      <ModalProvider>
+        <DashboardContainer />
+      </ModalProvider>
+    </ResultsProvider>
+  </>
 }

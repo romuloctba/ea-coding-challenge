@@ -45,3 +45,7 @@
 .selected {
   background-color: var(--selected-color)
 }
+
+.selected button {
+  visibility: hidden;
+}
